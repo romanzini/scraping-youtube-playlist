@@ -1,0 +1,40 @@
+[project]
+name = "lembradessesom-extractor"
+version = "0.1.0"
+description = "Extrai nome da musica e cantor de reels do Instagram"
+requires-python = ">=3.10"
+dependencies = [
+    "yt-dlp>=2024.1.0",
+    "easyocr>=1.7.0",
+    "Pillow>=10.0.0",
+    "requests>=2.31.0",
+    "opencv-python-headless>=4.8.0",
+    "numpy>=1.24.0",
+    "torch==2.4.1+cu121",
+    "torchvision==0.19.1+cu121",
+    "nvidia-cudnn-cu12==9.1.0.70",
+    "google-api-python-client>=2.100.0",
+    "google-auth>=2.23.0",
+    "google-auth-oauthlib>=1.1.0",
+]
+
+[project.scripts]
+extractor = "extractor.main:main"
+extractor-youtube = "extractor.youtube_main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["extractor"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[[tool.uv.index]]
+name = "pytorch-cu121"
+url = "https://download.pytorch.org/whl/cu121"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu121" }
+torchvision = { index = "pytorch-cu121" }
+nvidia-nccl-cu12 = { index = "pytorch-cu121" }
