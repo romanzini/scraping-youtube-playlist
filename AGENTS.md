@@ -1,5 +1,3 @@
---- Incluir no AGENTS.md
-
 ## Workflow Orchestration
 
 ### 1. Plan Mode Default
